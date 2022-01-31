@@ -26,6 +26,11 @@ function writeToLog(operationIdentifier, prevResult, operationNumber, newResult)
 
 function calculate(calculationType) {
     const enteredNumber = getUser();
+
+    if (!enteredNumber) {
+        return;
+    }
+    
     const initialResult = currentResult;
     let math;
 
