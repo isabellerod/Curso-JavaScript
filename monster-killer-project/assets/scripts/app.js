@@ -1,4 +1,5 @@
 const attackValue = 10;
+const strongAttack = 17;
 const monsterAttack = 14;
 let maxLife = 100;
 let monsterHealth = maxLife;
@@ -11,7 +12,7 @@ function attackMonster(mode) {
     if (mode === 'ATTACK') {
         maxDamage = attackValue;
     }
-    else {
+    else if (mode === 'STRONG_ATTACK') {
         maxDamage = strongAttack;
     }
     const damage = dealMonsterDamage(maxDamage);
