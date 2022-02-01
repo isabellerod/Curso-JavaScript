@@ -1,16 +1,31 @@
 const attackValue = 10;
 const strongAttack = 17;
 const monsterAttack = 14;
-const heal = 20;
+const healPlayer = 20;
 let maxLife = 100;
 let monsterHealth = maxLife;
 let playerHealth = maxLife;
+let hasBonusLife = true;
 
 adjustHealthBars(maxLife);
 
+function reset () {
+    monsterHealth = maxLife;
+    playerHealth = maxLife;
+    resetGame(maxLife);
+}
+
 function endRound() {
+    const inicialPlayerHealth = playerHealth;
     const playerDamage = dealPlayerDamage(monsterAttack);
     playerHealth -= playerDamage;
+    if(playerHealth <=0 && hasBonusLife) {
+        hasBonusLife = false;
+        removeBonusLife();
+        playerHealth = inicialPlayerHealth;
+        alert('You have another chance!');
+        setPlayerHealth(inicialPlayerHealth);
+    }
     if (monsterHealth <= 0 && playerHealth > 0) {
         alert('You won!');
     }
@@ -43,16 +58,16 @@ function strongAttackButton() {
     attackMonster('STRONG_ATTACK');
 }
 
-function healBtn() {
+function healButton() {
     let healValue;
-    if (playerHealth >= maxLife - heal) {
+    if (playerHealth >= maxLife - healPlayer) {
         alert("You can't heal to more than your max initial health.")
     }
     else {
-        healValue = heal;
+        healValue = healPlayer;
     }
-    increasePlayerHealth(heal);
-    playerHealth += heal;
+    increasePlayerHealth(healPlayer);
+    playerHealth += healPlayer;
     endRound();
 }
 
