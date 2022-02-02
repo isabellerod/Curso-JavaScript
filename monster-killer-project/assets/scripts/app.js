@@ -106,16 +106,8 @@ function endRound() {
 }
 
 function attackMonster(mode) {
-    let maxDamage;
-    let logEvent;
-    if (mode === modeAttack) {
-        maxDamage = attackValue;
-        logEvent = logPlayerAttack;
-    }
-    else if (mode === modeStrong) {
-        maxDamage = strongAttack;
-        logEvent = logPlayerStrongAttack;
-    }
+    const maxDamage = mode === modeAttack ? attackValue : strongAttack;
+    const logEvent = mode === modeAttack ? logPlayerAttack : logPlayerStrongAttack;
     const damage = dealMonsterDamage(maxDamage);
     monsterHealth -= damage;
     writeToLog(logEvent, damage, monsterHealth, playerHealth);
