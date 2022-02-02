@@ -3,6 +3,8 @@ const strongAttack = 17;
 const monsterAttack = 14;
 const healPlayer = 20;
 const enteredValue = prompt('Maximum life for you and the monster', '100');
+const modeAttack = 'ATTACK';
+const modeStrong = 'STRONG_ATTACK';
 
 let maxLife = parseInt(enteredValue);
 
@@ -46,10 +48,10 @@ function endRound() {
 
 function attackMonster(mode) {
     let maxDamage;
-    if (mode === 'ATTACK') {
+    if (mode === modeAttack) {
         maxDamage = attackValue;
     }
-    else if (mode === 'STRONG_ATTACK') {
+    else if (mode === modeStrong) {
         maxDamage = strongAttack;
     }
     const damage = dealMonsterDamage(maxDamage);
@@ -58,11 +60,11 @@ function attackMonster(mode) {
 }
 
 function attackButton() {
-    attackMonster('ATTACK');
+    attackMonster(modeAttack);
 }
 
 function strongAttackButton() {
-    attackMonster('STRONG_ATTACK');
+    attackMonster(modeStrong);
 }
 
 function healButton() {
