@@ -24,50 +24,52 @@ let hasBonusLife = true;
 adjustHealthBars(maxLife);
 
 function writeToLog(event, value, monsterH, playerH) {
-    let logEntry;
-    if (event === logPlayerAttack) {
-        logEntry = {
-            event: event,
-            value: value,
-            target: 'MONSTER',
-            finalMonsterHealth: monsterH,
-            finalPlayerHealth: playerH
-        };
-    }
-    else if (event === logPlayerStrongAttack) {
-        logEntry = {
-            event: event,
-            value: value,
-            target: 'MONSTER',
-            finalMonsterHealth: monsterH,
-            finalPlayerHealth: playerH
-        };
-    }
-    else if (event === logMonsterAttack) {
-        logEntry = {
-            event: event,
-            value: value,
-            target: 'PLAYER',
-            finalMonsterHealth: monsterH,
-            finalPlayerHealth: playerH
-        };
-    }
-    else if (event === logHealPlayer) {
-        logEntry = {
-            event: event,
-            value: value,
-            target: 'PLAYER',
-            finalMonsterHealth: monsterH,
-            finalPlayerHealth: playerH
-        };
-    }
-    else if (event === logGameOver) {
-        logEntry = {
-            event: event,
-            value: value,
-            finalMonsterHealth: monsterH,
-            finalPlayerHealth: playerH
-        };
+    let logEntry = {
+        event: event,
+        value: value,
+        finalMonsterHealth: monsterHealth,
+        finalPlayerHealth: playerHealth
+    };
+    switch(event) {
+        case logPlayerAttack:
+            logEntry.target = 'MONSTER';
+            break;
+        case logPlayerStrongAttack:
+            logEntry = {
+                event: event,
+                value: value,
+                target: 'MONSTER',
+                finalMonsterHealth: monsterH,
+                finalPlayerHealth: playerH
+            };
+            break;
+        case logMonsterAttack:
+            logEntry = {
+                event: event,
+                value: value,
+                target: 'PLAYER',
+                finalMonsterHealth: monsterH,
+                finalPlayerHealth: playerH
+            };
+            break;
+        case logHealPlayer:
+            logEntry = {
+                event: event,
+                value: value,
+                target: 'PLAYER',
+                finalMonsterHealth: monsterH,
+                finalPlayerHealth: playerH
+            };
+            break;
+        case logGameOver:
+            logEntry = {
+                event: event,
+                value: value,
+                finalMonsterHealth: monsterH,
+                finalPlayerHealth: playerH
+            };
+            break;
+        default:
     }
     battleLog.push(logEntry);
 }
