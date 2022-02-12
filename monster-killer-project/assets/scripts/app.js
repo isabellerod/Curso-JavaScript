@@ -20,7 +20,17 @@ function getMaxLife() {
     return parsedValue;
 }
 
-let maxLife = getMaxLife();
+let maxLife;
+
+try {
+    maxLife = getMaxLife();
+}
+catch (error) {
+    console.log(error);
+    maxLife = 100;
+    alert('Invalid input, max life set to 100');
+}
+
 let battleLog = [];
 let monsterHealth = maxLife;
 let playerHealth = maxLife;
