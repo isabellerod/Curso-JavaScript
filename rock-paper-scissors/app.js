@@ -4,4 +4,6 @@ function startGame() {
     console.log('Game starting...');
 }
 
+console.dir(startGame)
+
 startGameBtn.addEventListener('click', startGame);
