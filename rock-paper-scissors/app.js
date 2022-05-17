@@ -21,10 +21,10 @@ const playerChoice = function() {
 
 const computerChoice = function() {
     const randomValue = Math.random();
-    if (randomValue <.34) {
+    if (randomValue < 0.34) {
         return ROCK;
     }
-    else if (randomValue < .67) {
+    else if (randomValue > 0.34 && randomValue < 0.67) {
         return PAPER;
     }
     else {
@@ -52,6 +52,6 @@ startGameBtn.addEventListener('click', function() {
     console.log('Game is starting...');
     const playerSelection = playerChoice();
     const computerSelection = computerChoice();
-    const winner = getWinner(computerChoice, playerSelection);
+    const winner = getWinner(computerSelection, playerSelection);
     console.log(winner);
 });
