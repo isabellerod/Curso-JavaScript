@@ -88,14 +88,6 @@ const combine = (resultHandler, operation, ...numbers) => {
     resultHandler(sum);
 };
 
-//const subtractUp = function(resultHandler, ...numbers) {
-//    let sum = 0;
-//    for (const num of numbers) { //don't use that
-//        sum -= num;
-//    }
-//    resultHandler(sum);
-//};
-
 const showResult = (messageText, result) => {
     alert(messageText + ' ' + result);
 };
